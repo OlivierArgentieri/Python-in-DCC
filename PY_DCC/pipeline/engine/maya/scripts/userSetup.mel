@@ -1,0 +1,2 @@
+python("import sys;sys.path.insert(0, r'D:/OlivierArgentieri/Project/Pull_github/Artfx_Courses/Haussman/PythonInDCC/PY_DCC/pipeline/engine/maya/scripts')");
+python("import init");

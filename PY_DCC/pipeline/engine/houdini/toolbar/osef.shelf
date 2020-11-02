@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <shelfSet name="pipeline" label="Pipeline">
+    <memberToolshelf name="shelf_pipeline"/>
+  </shelfSet>
+
+  <toolshelf name="shelf_pipeline" label="Pipeline">
+    <memberTool name="PipelineWindow"/>
+  </toolshelf>
+
+  <tool name="PipelineWindow" label="File Manager" icon="PLASMA_App">
+    <script scriptType="python"><![CDATA[import sys
+sys.path.append(r'D:\\OlivierArgentieri\\Project\\Pull_github\Artfx_Courses\\Haussman\\PythonInDCC\\PY_DCC')
+
+from pipeline.ui import my_window as mw
+
+#reload(my_window) # Reload extern
+
+
+win = mw.MyWindow()
+win.show()]]></script>
+  </tool>
+</shelfDocument>

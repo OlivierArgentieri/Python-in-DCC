@@ -1,0 +1,5 @@
+shelf houdini : C:\Users\oargentieri\Documents\houdini18.0\toolbar
+
+env maya : C:\Users\oargentieri\Documents\maya\2019
+
+env houdini : C:\Users\oargentieri\Documents\houdini18.0
