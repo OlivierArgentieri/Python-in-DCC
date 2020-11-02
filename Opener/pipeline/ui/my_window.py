@@ -1,5 +1,4 @@
 import sys, os
-#sys.path.append(r'\\multifct\tools\pipeline\global\packages') #path to QT Package
 
 from Qt import QtWidgets, QtCompat
 from Qt.QtWidgets import QApplication
@@ -7,10 +6,8 @@ from pipeline.engine import engine # get our Engine
 #reload(engine)
 
 
-
 #os.path.join
 ui_path = os.path.abspath(os.getcwd())+'\\pipeline\\ui\\my_window_new.ui'
-#ui_path = r'D:\\Projet\\PullGithub\Artfx_Courses\\Haussman\\PythonInDCC\\PY_DCC\\pipeline\\ui\\my_window_new.ui'
 
 class MyWindow(QtWidgets.QMainWindow):
     

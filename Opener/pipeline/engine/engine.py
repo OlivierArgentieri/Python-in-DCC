@@ -33,7 +33,6 @@ def get_current(myWindow):
     if ('Nuke' in sys.executable):
         from pipeline.engine.nuke_engine import NukeEngine
         engine = NukeEngine(myWindow)
-    
     else:
         from pipeline.engine.standalone_engine import StandaloneEngine
         engine = StandaloneEngine(myWindow)
