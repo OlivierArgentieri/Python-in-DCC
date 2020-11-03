@@ -7,7 +7,7 @@ from pipeline.engine import engine # get our Engine
 
 
 #os.path.join
-ui_path = os.path.abspath(os.getcwd())+'\\pipeline\\ui\\my_window_new.ui'
+ui_path = os.path.abspath(os.getcwd())+'\\pipeline\\ui\\my_window_v2.ui'
 
 class MyWindow(QtWidgets.QMainWindow):
     
@@ -47,5 +47,5 @@ def launchWindow():
 
     win = MyWindow()
     win.show()
-
+    win.setFixedSize(win.size())
     app.exec_()

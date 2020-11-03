@@ -22,8 +22,9 @@ cmds.file(mayaSceneFile, open = True, force=True)
 
 for rootObject in rootObjects:
     print rootObject 
-    # fram range -frameRange -0.25 -frameRelativeSample 0 -frameRelativeSample 0.5
-    command = "-frameRange " + frameStart + " " + frameEnd +" -uvWrite -dataFormat ogawa -root " + rootObject + " -file " + exportFileName +"_"+rootObject+".abc"
+
+    # motion blur :  fram range -frameRange -0.25 -frameRelativeSample 0 -frameRelativeSample 0.5
+    command = "-frameRange " + frameStart + " " + frameEnd +" -uvWrite -dataFormat ogawa -root " + rootObject + " -file " + exportFileName +"_"+rootObject+".abc "
     cmds.AbcExport ( j = command )
 
 # mayabatch. exe
