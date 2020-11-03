@@ -7,6 +7,9 @@ class StandaloneEngine(engine.Engine):
     def open(self):
       path = QtWidgets.QFileDialog.getOpenFileName(self.currentWindow, "Open Maya File", "D:\OlivierArgentieri\Project\Pull_github", "*.*")
 
+      if path[0] == '':
+          return
+
       if(platform.system() == 'Darwin'): # mac
          subprocess.call(('open', path[0]))
       elif (platform.system() == "Windows"): #windows
@@ -15,5 +18,4 @@ class StandaloneEngine(engine.Engine):
          subprocess.call(("xdg-open", path[0])) #linux
 
     def save(self):
-         
          pass
