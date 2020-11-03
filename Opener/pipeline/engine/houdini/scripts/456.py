@@ -1,12 +1,21 @@
-import sys
-import hou 
+# -*- coding: utf-8 -*-
+"""
+ARTFX Pipeline Launch script for Houdini.
 
-path_env = 'D:\Projet\Pull_github\Artfx_Courses\Haussman\PythonInDCC\PY_DCC' #Qt.py and libs path
-if path_env not in sys.path:
-    sys.path.append(path_env)
-    # sys.path.insert(0, path_env) to add in top of paths
-    
-    
-print("Starting up pipeline")
-    
-   
+For this to work:
+HOUDINI_SCRIPT_PATH must be set with ";" separator and the pipeline script location must be last.
+Example: HOUDINI_SCRIPT_PATH = &;T:/PIPELINE/users/mhaussmann/workspace/alpha/packages/houdiniLib/launch/scripts
+
+"""
+import sys
+print('Starting up Pipeline in Houdini')
+
+here = hou.getenv('HOUDINI_SCRIPT_PATH').split(';')[-1]   # os.path.dirname(__file__) not working in 456.py
+
+deployment_root = here.split('/pipeline/')[0]
+print('Script root {}'.format(deployment_root))
+
+sys.path.append(deployment_root)  # path to pipeline 
+sys.path.append(r'//multifct/tools/pipeline/global/packages')  # path to Qt package
+
+print('Done Pipeline config')

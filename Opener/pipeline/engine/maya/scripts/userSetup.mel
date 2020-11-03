@@ -1,2 +1,7 @@
-python("import sys;sys.path.insert(0, r'D:/OlivierArgentieri/Project/Pull_github/Artfx_Courses/Haussman/PythonInDCC/PY_DCC/pipeline/engine/maya/scripts')");
+python("print('Start userSetup.mel in Maya')");
+$here = `whatIs userSetup`;
+// print($here);
+python("here = r'" + $here + "'.replace('Script found in: ', '')");
+python("import sys,os; sys.path.insert(0, os.path.dirname(here))");
 python("import init");
+python("print('Done import init in Maya')");
