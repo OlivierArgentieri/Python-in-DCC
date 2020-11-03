@@ -11,6 +11,7 @@ from .abc.abc_export import AbcExport  # get AbcEnginePart
 #os.path.join
 ui_path = os.path.abspath(os.getcwd())+'\\pipeline\\ui\\my_window_v2.ui'
 mayabatch = "D:/Program_Files/Maya2019.2/bin/mayabatch.exe" # path to maya batch
+exec_py = 'D:/Projet/PullGithub/Python-in-DCC/Alembic/exec_py.mel' # pymel script path
 
 class MyWindow(QtWidgets.QMainWindow):
     
@@ -35,7 +36,7 @@ class MyWindow(QtWidgets.QMainWindow):
         QtCompat.loadUi(ui_path, self)
 
         # Set AbcExport
-        self.AbcExportObject = AbcExport(self, mayabatch)
+        self.AbcExportObject = AbcExport(self, (mayabatch, exec_py) )
 
         # ---- Opener part ---
         # openButton

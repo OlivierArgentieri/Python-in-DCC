@@ -5,6 +5,7 @@ class AbcExport(object):
     # f/p
     rootObjects = []
     mayabatch = ''
+    exec_py = ''
 
     # ui elements
     tb_SceneFile = ''
@@ -38,7 +39,7 @@ class AbcExport(object):
 
     def onClick_runExport(self):
         # call custom commands
-        command = [self.mayabatch, '-script', 'D:/Projet/PullGithub/Python-in-DCC/Alembic/exec_py.mel', self.tb_SceneFile.text(), self.tb_OutFolder.text(), str(self.sb_startFrame.value()), str(self.sb_endFrame.value())]
+        command = [self.mayabatch, '-script', self.exec_py, self.tb_SceneFile.text(), self.tb_OutFolder.text(), str(self.sb_startFrame.value()), str(self.sb_endFrame.value())]
         subprocess.Popen(command + self.rootObjects, shell=True)
 
     def bindEvent(self):
@@ -62,12 +63,16 @@ class AbcExport(object):
 
         self.tb_RootObjects.setText(' '.join(self.rootObjects))
 
-    def __init__(self, mainWindow, mayaBatchPath):
+    def isValid(self):
+        return not self.tb_SceneFile.text() and not self.tb_OutFolder.text() and not self.tb_RootObjects.text()
+
+    def __init__(self, mainWindow, env_path):
         self.tb_SceneFile = mainWindow.tb_abcSceneFile
         self.tb_OutFolder = mainWindow.tb_abcOutFolder
         self.tb_RootObjects = mainWindow.tb_abcRootObjects
 
-        self.mayabatch = mayaBatchPath
+        self.mayabatch = env_path[0]
+        self.exec_py = env_path[1]
         # spin box
         self.sb_startFrame = mainWindow.sb_startFrame
         self.sb_endFrame = mainWindow.sb_endFrame
