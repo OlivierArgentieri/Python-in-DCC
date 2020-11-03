@@ -1,10 +1,10 @@
 import sys, os, subprocess
 from Qt import QtWidgets, QtCompat
 
-
 class AbcExport(object):
     # f/p
     rootObjects = []
+    mayabatch = ''
 
     # ui elements
     tb_SceneFile = ''
@@ -18,8 +18,7 @@ class AbcExport(object):
 
     def browseSceneFile(self):
         # open file browser only for maya mb|ma
-        path = QtWidgets.QFileDialog.getOpenFileName(self.mainWindow, "Open Maya File",
-                                                     "D:\Projet\PullGithub\Python-in-DCC\Test\Maya", "*.ma *.mb")
+        path = QtWidgets.QFileDialog.getOpenFileName(self.mainWindow, "Open Maya File", "D:\Projet\PullGithub\Python-in-DCC\Test\Maya", "*.ma *.mb")
 
         if path[0] == '':
             return
@@ -39,9 +38,7 @@ class AbcExport(object):
 
     def onClick_runExport(self):
         # call custom commands
-        command = ['D:/Program_Files/Maya2019.2/bin/mayabatch.exe', '-script',
-                   'D:/Projet/PullGithub/Python-in-DCC/Alembic/test.mel', self.tb_SceneFile.text(),
-                   self.tb_OutFolder.text(), str(self.sb_startFrame.value()), str(self.sb_endFrame.value())]
+        command = [self.mayabatch, '-script', 'D:/Projet/PullGithub/Python-in-DCC/Alembic/exec_py.mel', self.tb_SceneFile.text(), self.tb_OutFolder.text(), str(self.sb_startFrame.value()), str(self.sb_endFrame.value())]
         subprocess.Popen(command + self.rootObjects, shell=True)
 
     def bindEvent(self):
@@ -65,11 +62,12 @@ class AbcExport(object):
 
         self.tb_RootObjects.setText(' '.join(self.rootObjects))
 
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow, mayaBatchPath):
         self.tb_SceneFile = mainWindow.tb_abcSceneFile
         self.tb_OutFolder = mainWindow.tb_abcOutFolder
         self.tb_RootObjects = mainWindow.tb_abcRootObjects
 
+        self.mayabatch = mayaBatchPath
         # spin box
         self.sb_startFrame = mainWindow.sb_startFrame
         self.sb_endFrame = mainWindow.sb_endFrame
