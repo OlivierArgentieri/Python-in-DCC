@@ -1,6 +1,6 @@
 import maya.cmds as cmds
 from pipeline.engine import engine
-from Qt import QtWidgets
+from lib.Qt import QtWidgets
 class MayaEngine(engine.Engine):
     def open(self):
        path = QtWidgets.QFileDialog.getOpenFileName(self.currentWindow, "Open Maya File", "D:\OlivierArgentieri\Project\Pull_github\Artfx_Courses\Haussman\Micro_film\Maya\scenes\Layout", "Maya Ascii (*.mb)")
