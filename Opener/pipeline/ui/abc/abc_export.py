@@ -1,5 +1,5 @@
 import sys, os, subprocess
-from Qt import QtWidgets, QtCompat
+from lib.Qt import QtWidgets, QtCompat
 from pipeline.conf import mayabatch, exec_py # app conf
 
 class AbcExport(object):

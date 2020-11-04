@@ -1,7 +1,7 @@
 import sys
 
-from Qt import QtWidgets, QtCompat
-from Qt.QtWidgets import QApplication
+from lib.Qt import QtWidgets, QtCompat
+from lib.Qt.QtWidgets import QApplication
 from pipeline.engine import engine  # get our Engine
 
 # reload(engine)

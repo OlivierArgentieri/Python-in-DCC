@@ -1,7 +1,7 @@
 from pipeline.engine import engine
 import subprocess, os, platform
 
-from Qt import QtWidgets
+from lib.Qt import QtWidgets
 class StandaloneEngine(engine.Engine):
 
     def open(self):
