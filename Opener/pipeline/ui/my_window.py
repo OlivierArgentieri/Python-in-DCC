@@ -5,7 +5,7 @@ from Qt.QtWidgets import QApplication
 from pipeline.engine import engine  # get our Engine
 
 # reload(engine)
-from .abc.abc_export import AbcExport  # get AbcEnginePart
+from pipeline.engine.abc import abc_export  # get AbcEnginePart
 import conf  # app conf
 
 
@@ -13,9 +13,6 @@ class MyWindow(QtWidgets.QMainWindow):
     
     # f/p
     AbcExportObject = ''
-
-    def openDialog(self):
-        return QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', "D:\OlivierArgentieri\Project\Pull_github\Artfx_Courses\Haussman\Micro_film\Maya\scenes\Layout", '*.*')
 
     def open(self):
         self.engine.open()
@@ -25,6 +22,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(MyWindow, self).__init__()
+
         self.engine = engine.get_current(self)
         self.dataPath = ''
         
@@ -32,7 +30,7 @@ class MyWindow(QtWidgets.QMainWindow):
         QtCompat.loadUi(conf.ui_path, self)
 
         # Set AbcExport
-        self.AbcExportObject = AbcExport(self)
+        self.AbcExportObject = abc_export.get_current(self)
 
         # ---- Opener part ---
         # openButton
