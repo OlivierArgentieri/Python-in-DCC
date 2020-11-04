@@ -1,5 +1,6 @@
 import sys, os, subprocess
 from Qt import QtWidgets, QtCompat
+import conf # app conf
 
 class AbcExport(object):
     # f/p
@@ -66,13 +67,13 @@ class AbcExport(object):
     def isValid(self):
         return not self.tb_SceneFile.text() and not self.tb_OutFolder.text() and not self.tb_RootObjects.text()
 
-    def __init__(self, mainWindow, env_path):
+    def __init__(self, mainWindow):
         self.tb_SceneFile = mainWindow.tb_abcSceneFile
         self.tb_OutFolder = mainWindow.tb_abcOutFolder
         self.tb_RootObjects = mainWindow.tb_abcRootObjects
 
-        self.mayabatch = env_path[0]
-        self.exec_py = env_path[1]
+        self.mayabatch = conf.mayabatch
+        self.exec_py = conf.exec_py
         # spin box
         self.sb_startFrame = mainWindow.sb_startFrame
         self.sb_endFrame = mainWindow.sb_endFrame
