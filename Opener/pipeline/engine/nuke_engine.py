@@ -9,3 +9,6 @@ class NukeEngine(engine.Engine):
     def save(self):
        path = nuke.getFilename('To save', '*.nknc *.nk')
        nuke.nodeCopy(path)
+
+    def __str__(self):
+        return 'nuke engine'

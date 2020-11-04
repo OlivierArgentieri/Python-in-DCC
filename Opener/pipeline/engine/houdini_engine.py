@@ -1,6 +1,6 @@
 from pipeline.engine import engine
 import hou
-from Qt import QtWidgets
+from lib.Qt import QtWidgets
 
 class HoudiniEngine(engine.Engine):
 
@@ -11,7 +11,11 @@ class HoudiniEngine(engine.Engine):
         hou.hipFile.load(path)
         
     def save(self):
-        path = QtWidgets.QFileDialog.getSaveFileName(self.currentWindow, "Open Houdini File", "", "All Files (*)")
+        path = QtWidgets.QFileDialog.getSaveFileName(self.currentWindow, "save Houdini File", "", "All Files (*)")
         #path = hou.ui.selectFile()
+
+
         hou.hipFile.save(file_name = path[0] + ".hip", save_to_recent_files=False)
-        
+
+    def __str__(self):
+        return 'houdini engine'

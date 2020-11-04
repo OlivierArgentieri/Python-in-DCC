@@ -19,3 +19,6 @@ class StandaloneEngine(engine.Engine):
 
     def save(self):
          pass
+
+    def __str__(self):
+        return 'standalone engine'

@@ -29,8 +29,6 @@ class MyWindow(QtWidgets.QMainWindow):
         self.dataPath = ''
 
         # setup ui
-        #QtCompat.loadUi('D:\\Projet\\PullGithub\\Python-in-DCC\\Opener\\pipeline\\ui\\my_window_v2.ui', self)
-        print(ui_path)
         QtCompat.loadUi(ui_path, self)
 
         # Set AbcExport
@@ -57,4 +55,6 @@ def launchWindow():
     win = MyWindow()
     win.show()
     win.setFixedSize(win.size())
-    app.exec_()
+    #app.exec_() crash on houdini https://forums.odforce.net/topic/24196-pyside-houdini-freeze/
+
+    #app.quit()

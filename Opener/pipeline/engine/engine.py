@@ -22,18 +22,21 @@ def get_current(myWindow):
 
     if ('maya' in sys.executable):
         from pipeline.engine import maya_engine
-
         engine = maya_engine.MayaEngine(myWindow)
+        return engine
 
     if ('houdini' in sys.executable):
         from pipeline.engine.houdini_engine import HoudiniEngine
-
         engine = HoudiniEngine(myWindow)
+        return engine
 
     if ('Nuke' in sys.executable):
         from pipeline.engine.nuke_engine import NukeEngine
         engine = NukeEngine(myWindow)
-    else:
-        from pipeline.engine.standalone_engine import StandaloneEngine
-        engine = StandaloneEngine(myWindow)
+        return engine
+
+    # then default engine
+    from pipeline.engine.standalone_engine import StandaloneEngine
+    engine = StandaloneEngine(myWindow)
     return engine
+

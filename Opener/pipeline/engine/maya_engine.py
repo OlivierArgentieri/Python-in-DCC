@@ -13,3 +13,6 @@ class MayaEngine(engine.Engine):
        
        cmds.file(rename = path[0])
        cmds.file(save = True)
+
+    def __str__(self):
+        return 'maya engine'
