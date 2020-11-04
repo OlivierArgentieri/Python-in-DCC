@@ -1,5 +1,5 @@
 from pipeline.engine import engine
-import hou 
+import hou
 from Qt import QtWidgets
 
 class HoudiniEngine(engine.Engine):

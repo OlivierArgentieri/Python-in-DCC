@@ -6,7 +6,7 @@ from pipeline.engine import engine  # get our Engine
 
 # reload(engine)
 from .abc.abc_export import AbcExport  # get AbcEnginePart
-import conf  # app conf
+from pipeline.conf import ui_path   # app conf
 
 
 class MyWindow(QtWidgets.QMainWindow):
@@ -27,9 +27,11 @@ class MyWindow(QtWidgets.QMainWindow):
         super(MyWindow, self).__init__()
         self.engine = engine.get_current(self)
         self.dataPath = ''
-        
+
         # setup ui
-        QtCompat.loadUi(conf.ui_path, self)
+        #QtCompat.loadUi('D:\\Projet\\PullGithub\\Python-in-DCC\\Opener\\pipeline\\ui\\my_window_v2.ui', self)
+        print(ui_path)
+        QtCompat.loadUi(ui_path, self)
 
         # Set AbcExport
         self.AbcExportObject = AbcExport(self)

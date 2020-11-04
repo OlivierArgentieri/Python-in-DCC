@@ -1,6 +1,6 @@
 import sys, os, subprocess
 from Qt import QtWidgets, QtCompat
-import conf # app conf
+from pipeline.conf import mayabatch, exec_py # app conf
 
 class AbcExport(object):
     # f/p
@@ -72,8 +72,10 @@ class AbcExport(object):
         self.tb_OutFolder = mainWindow.tb_abcOutFolder
         self.tb_RootObjects = mainWindow.tb_abcRootObjects
 
-        self.mayabatch = conf.mayabatch
-        self.exec_py = conf.exec_py
+        #conf
+        self.mayabatch = mayabatch
+        self.exec_py = exec_py
+
         # spin box
         self.sb_startFrame = mainWindow.sb_startFrame
         self.sb_endFrame = mainWindow.sb_endFrame
