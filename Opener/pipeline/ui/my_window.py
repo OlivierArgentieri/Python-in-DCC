@@ -55,6 +55,6 @@ def launchWindow():
     win = MyWindow()
     win.show()
     win.setFixedSize(win.size())
-    #app.exec_() crash on houdini https://forums.odforce.net/topic/24196-pyside-houdini-freeze/
+    if 'standalone' in win.engine.__str__():
+        app.exec_()# crash on houdini https://forums.odforce.net/topic/24196-pyside-houdini-freeze/
 
-    #app.quit()
