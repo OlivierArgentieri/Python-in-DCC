@@ -1,22 +1,33 @@
 import sys, os, subprocess
 from lib.Qt import QtWidgets, QtCompat
-from pipeline.conf import mayabatch, exec_py # app conf
+from pipeline.conf import mayabatch, exec_py, hython, abcsToSceneHoudini  # app conf
+
 
 class AbcExport(object):
-    # f/p
+    # ---  f/p ---
     rootObjects = []
+
+    # conf
     mayabatch = ''
     exec_py = ''
+    hython = ''
+    abcsToSceneHoudini = ''
 
     # ui elements
+    mainWindow = ''
+
     tb_SceneFile = ''
     tb_OutFolder = ''
     tb_RootObjects = ''
 
     sb_startFrame = ''
     sb_endFrame = ''
+    chb_generateHouScene = ''
+    # end f/p ----
 
-    mainWindow = ''
+
+    def isValid(self):
+        return not self.tb_SceneFile.text() and not self.tb_OutFolder.text() and not self.tb_RootObjects.text()
 
     def browseSceneFile(self):
         # open file browser only for maya mb|ma
@@ -41,7 +52,14 @@ class AbcExport(object):
     def onClick_runExport(self):
         # call custom commands
         command = [self.mayabatch, '-script', self.exec_py, self.tb_SceneFile.text(), self.tb_OutFolder.text(), str(self.sb_startFrame.value()), str(self.sb_endFrame.value())]
-        subprocess.Popen(command + self.rootObjects, shell=True)
+        subprocess.run(command + self.rootObjects, shell=True)
+
+        self.generateHoudiniScene()
+
+    def generateHoudiniScene(self):
+        command = [self.hython, self.abcsToSceneHoudini, self.tb_OutFolder.text(), self.tb_OutFolder.text()]
+        print(command)
+        subprocess.run(command, shell=True)
 
     def bindEvent(self):
         if not self.mainWindow:
@@ -51,7 +69,6 @@ class AbcExport(object):
         self.mainWindow.btn_abcRunExport.clicked.connect(self.onClick_runExport)
 
     def tryParseRootElement(self, pathFile):
-
         if pathFile == '' or os.path.splitext(pathFile)[1] != '.ma':
             self.tb_RootObjects.setText('')
             return
@@ -64,17 +81,16 @@ class AbcExport(object):
 
         self.tb_RootObjects.setText(' '.join(self.rootObjects))
 
-    def isValid(self):
-        return not self.tb_SceneFile.text() and not self.tb_OutFolder.text() and not self.tb_RootObjects.text()
-
     def __init__(self, mainWindow):
         self.tb_SceneFile = mainWindow.tb_abcSceneFile
         self.tb_OutFolder = mainWindow.tb_abcOutFolder
         self.tb_RootObjects = mainWindow.tb_abcRootObjects
 
-        #conf
+        # conf
         self.mayabatch = mayabatch
         self.exec_py = exec_py
+        self.hython = hython
+        self.abcsToSceneHoudini = abcsToSceneHoudini
 
         # spin box
         self.sb_startFrame = mainWindow.sb_startFrame
@@ -82,6 +98,9 @@ class AbcExport(object):
 
         # ref main window
         self.mainWindow = mainWindow
+
+        # checkbox generate houdini file
+        self.chb_generateHouScene = mainWindow.chb_generateHouScene
 
         # bind Action
         self.bindEvent()
