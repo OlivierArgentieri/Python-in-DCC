@@ -14,7 +14,7 @@ global proc shelf_MayaPipeline () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "print \"test\""
+        -annotation "Opener"
         -enableBackground 0
         -backgroundColor 0 0 0 
         -highlightColor 0.321569 0.521569 0.65098 
@@ -33,7 +33,7 @@ global proc shelf_MayaPipeline () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "print \"test\""
+        -command "from pipeline.ui import my_window as mw\rmw.launchWindow()"
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
