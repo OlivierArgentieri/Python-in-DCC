@@ -17,11 +17,8 @@
     <script scriptType="python"><![CDATA[
 	
 from pipeline.ui import my_window as mw
-#reload(my_window) # Reload extern
 
-
-win = mw.MyWindow()
-win.show()
+mw.launchWindow()
 	
 	]]></script>
   </tool>

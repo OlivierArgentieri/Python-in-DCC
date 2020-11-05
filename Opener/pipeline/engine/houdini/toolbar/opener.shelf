@@ -14,15 +14,9 @@
   </toolshelf>
 
   <tool name="PipelineWindow" label="File Manager" icon="PLASMA_App">
-    <script scriptType="python"><![CDATA[import sys
-sys.path.append(r'D:\\OlivierArgentieri\\Project\\Pull_github\Artfx_Courses\\Haussman\\PythonInDCC\\PY_DCC')
+    <script scriptType="python"><![CDATA[from pipeline.ui import my_window as mw
 
-from pipeline.ui import my_window as mw
-
-#reload(my_window) # Reload extern
-
-
-win = mw.MyWindow()
-win.show()]]></script>
+mw.launchWindow()
+]]></script>
   </tool>
 </shelfDocument>

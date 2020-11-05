@@ -19,10 +19,11 @@ outDirectory = sys.argv[2]
 
 outFileName = 'out.hip'
 outDirectory = os.path.join(outDirectory, outFileName)
-#hou.hipFile.load('D:/Projet/PullGithub/Python-in-DCC/Alembic/houdini/houdiniSample/BaseTemplateHoudini.hip')
 
 hou.hipFile.save(outDirectory)
 hou.hipFile.load(outDirectory)
+
+# prepare base file
 initFileNodes()
 
 
