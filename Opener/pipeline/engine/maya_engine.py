@@ -3,7 +3,7 @@ from pipeline.engine import engine
 from lib.Qt import QtWidgets
 class MayaEngine(engine.Engine):
     def open(self):
-       path = QtWidgets.QFileDialog.getOpenFileName(self.currentWindow, "Open Maya File", "D:\OlivierArgentieri\Project\Pull_github\Artfx_Courses\Haussman\Micro_film\Maya\scenes\Layout", "Maya Ascii (*.mb)")
+       path = QtWidgets.QFileDialog.getOpenFileName(self.currentWindow, "Open Maya File", "D:\OlivierArgentieri\Project\Pull_github\Artfx_Courses\Haussman\Micro_film\Maya\scenes\Layout", "*.ma *.mb")
        #path = cmds.fileDialog2(fileMode = 1, startingDirectory = "D:\OlivierArgentieri\Project\Pull_github\Artfx_Courses\Haussman\Micro_film\Maya\scenes\Layout", fileFilter="Maya Ascii (*.mb)")
        cmds.file(path[0], open = True, force=True)
 
