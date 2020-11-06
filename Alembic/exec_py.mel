@@ -1,3 +1,0 @@
-//$here = `whatIs exec_py`;
-//print($here);
-python("execfile('D:/Projet/PullGithub/Python-in-DCC/Alembic/abc_export.py')");

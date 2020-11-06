@@ -54,11 +54,12 @@ class AbcExport(object):
         command = [self.mayabatch, '-script', self.exec_py, self.tb_SceneFile.text(), self.tb_OutFolder.text(), str(self.sb_startFrame.value()), str(self.sb_endFrame.value())]
         subprocess.call(command + self.rootObjects, shell=True) # Run crash on maya/houdini /!\
 
-        self.generateHoudiniScene()
+        if self.chb_generateHouScene.isChecked():
+            self.generateHoudiniScene()
 
     def generateHoudiniScene(self):
         command = [self.hython, self.abcsToSceneHoudini, self.tb_OutFolder.text(), self.tb_OutFolder.text()]
-        print(command)
+
         subprocess.call(command, shell=True)
 
     def bindEvent(self):
