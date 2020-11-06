@@ -5,7 +5,8 @@ from lib.Qt.QtWidgets import QApplication
 from pipeline.engine import engine  # get our Engine
 
 # reload(engine)
-from .abc.abc_export import AbcExport  # get AbcEnginePart
+from pipeline.module.abc_export_maya.abc_export import AbcExport  # get AbcEnginePart
+from pipeline.module.abc_to_hip.abc_to_hip import AbcToHip  # get AbcEnginePart
 from pipeline.conf import ui_path   # app conf
 
 
@@ -13,6 +14,7 @@ class MyWindow(QtWidgets.QMainWindow):
     
     # f/p
     AbcExportObject = ''
+    AbcToHip = ''
 
     def openDialog(self):
         return QtWidgets.QFileDialog.getOpenFileName(self, 'Open File', "D:\OlivierArgentieri\Project\Pull_github\Artfx_Courses\Haussman\Micro_film\Maya\scenes\Layout", '*.*')
@@ -23,6 +25,10 @@ class MyWindow(QtWidgets.QMainWindow):
     def save(self):
         self.engine.save()
 
+    def loadModules(self):
+        self.AbcExportObject = AbcExport(self)
+        self.AbcToHip = AbcToHip(self)
+
     def __init__(self):
         super(MyWindow, self).__init__()
         self.engine = engine.get_current(self)
@@ -31,8 +37,8 @@ class MyWindow(QtWidgets.QMainWindow):
         # setup ui
         QtCompat.loadUi(ui_path, self)
 
-        # Set AbcExport
-        self.AbcExportObject = AbcExport(self)
+        # load module
+        self.loadModules()
 
         # ---- Opener part ---
         # openButton
@@ -40,9 +46,6 @@ class MyWindow(QtWidgets.QMainWindow):
         # saveButton
         self.btn_saveFile.clicked.connect(self.save)
         # ---- End opener part ---
-
-
-       
 
 
 def launchWindow():

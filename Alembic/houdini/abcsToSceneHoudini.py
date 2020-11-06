@@ -26,7 +26,6 @@ hou.hipFile.load(outDirectory)
 # prepare base file
 initFileNodes()
 
-
 for file in os.listdir(sourceDirectory):
     if file.endswith(".abc"):
         generateAlembicNode(os.path.join(sourceDirectory, file))

@@ -10,4 +10,4 @@ hython = 'F:/Program_Files/Houdini_18.0.499/bin/hython.exe'
 abcsToSceneHoudini = 'D:/Projet/PullGithub/Python-in-DCC/Alembic/houdini/abcsToSceneHoudini.py' #(include in the project : Alembic/houdini)
 
 # ======== GLOBAL SETTINGS ========
-ui_path = 'D:/Projet/PullGithub/Python-in-DCC/Opener/pipeline/ui/my_window_v2.ui' #(include in the project : Opener/pipeline/ui)
+ui_path = 'D:/Projet/PullGithub/Python-in-DCC/Opener/pipeline/ui/my_window_v3.ui' #(include in the project : Opener/pipeline/ui)
